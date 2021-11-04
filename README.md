@@ -1,5 +1,10 @@
 **IMPORTANT:** There have been significant changes in the August 2021 release. See the [CHANGELOG](https://github.com/minus34/gnaf-loader/blob/master/CHANGELOG.md) for details
 
+# TL;DR (sample command):
+```
+python3 load-gnaf.py --gnaf-tables-path=/mnt/data/G-NAF/G-NAF\ AUGUST\ 2021/ --admin-bdys-path=/mnt/data/AUG21_Admin_Boundaries_ESRIShapefileorDBFfile_GDA2020/ --pgdb=gnaf_loader --pguser=username --pghost=localhost --pgpassword=XXXXXXXX --max-processes 1 --geoscape-version 202108 --raw-fk
+```
+
 # gnaf-loader
 A quick way to load the complete Geocoded National Address File of Australia (GNAF) and Australian Administrative Boundaries into Postgres, simplified and ready to use as reference data for geocoding, analysis, visualisation and aggregation.
 
@@ -24,7 +29,7 @@ To get a good load time you'll need to configure your Postgres server for perfor
 
 ### Process
 1. Download [Geoscape GNAF from data.gov.au](https://data.gov.au/dataset/geocoded-national-address-file-g-naf)
-2. Download [Geoscape Administrative Boundaries from data.gov.au](https://data.gov.au/dataset/geoscape-administrative-boundaries) (**download the ESRI Shapefile GDA94 version**)
+2. Download [Geoscape Administrative Boundaries from data.gov.au](https://data.gov.au/dataset/geoscape-administrative-boundaries) (**download the ESRI Shapefile GDA2020 version, this branch has been patched**)
 3. Unzip GNAF to a directory on your Postgres server
 4. Unzip Admin Bdys to a local directory
 5. Alter security on those directories to grant Postgres read access
