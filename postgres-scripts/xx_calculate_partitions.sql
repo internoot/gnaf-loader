@@ -17,7 +17,7 @@ SELECT partition_id,
        percentile,
        longitude as min_longitude,
        lead(longitude) OVER (ORDER BY partition_id) as max_longitude,
-       st_multi(ST_MakeEnvelope(longitude, -43.58311104::double precision, lead(longitude) OVER (ORDER BY partition_id), -9.22990371::double precision, 4283)) AS geom
+       st_multi(ST_Transform(ST_MakeEnvelope(longitude, -43.58311104::double precision, lead(longitude) OVER (ORDER BY partition_id), -9.22990371::double precision, 4283)), 7844) AS geom
 FROM parts2
 ;
 
@@ -32,7 +32,7 @@ CREATE TABLE testing2.commonwealth_electorates_partitioned (
   ce_pid text NOT NULL,
   name text NOT NULL,
   state text NOT NULL,
-  geom geometry(Polygon, 4283, 2) NOT NULL
+  geom geometry(Polygon, 7844, 2) NOT NULL
 ) WITH (OIDS=FALSE);
 ALTER TABLE testing2.commonwealth_electorates_partitioned OWNER TO postgres
 ;
